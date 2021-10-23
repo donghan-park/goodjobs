@@ -1,0 +1,81 @@
+$secondary-color: #8a8a8a;
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .input-container {
+    width: 20rem;
+    height: 2.4rem;
+    margin: 0.4rem 0;
+    position: relative;
+
+    .icon {
+      transition: 0.3s all;
+
+      &.focused {
+        opacity: 0;
+      }
+
+      position: absolute;
+      left: 0.8rem;
+      height: 1rem;
+      top: 0.6rem;
+      color: $secondary-color;
+    }
+
+    input {
+      &.focused {
+        padding-left: 0.8rem;
+      }
+
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      border: 2px transparent solid;
+      outline: none;
+      background-color: #ebebeb;
+      padding-left: 2.2rem;
+      transition: 0.3s all;
+  
+      &:hover {
+        border-color: $secondary-color;
+      }
+  
+      &:focus {
+        border-color: #d34a4a;
+        padding-left: 0.8rem;
+      }
+    }
+  }
+
+  button {
+    margin-top: 2rem;
+    width: 8rem;
+    height: 3rem;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s all;
+
+    &:hover {
+      border-color: $secondary-color;
+    }
+  }
+
+  p {
+    margin-top: 1.4rem;
+    font-size: 0.8rem;
+    color: $secondary-color;
+    cursor: pointer;
+    text-align: center;
+  }
+}
