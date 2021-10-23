@@ -1,9 +1,12 @@
 import React from 'react'
 
-const Main = () => {
+const Main = ({ username }) => {
     return (
-        <div>
-            
+        <div className='main-page'>
+            <h1>{username}</h1>
+            <div className="listings-container">
+
+            </div>
         </div>
     )
 }

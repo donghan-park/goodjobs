@@ -1,4 +1,4 @@
-$secondary-color: #8a8a8a;
+@import './Variables.scss';
 
 .login-page {
   display: flex;
@@ -8,7 +8,7 @@ $secondary-color: #8a8a8a;
   height: 100vh;
 
   h1 {
-    font-size: 3rem;
+    font-size: $h1-font-size;
     margin-bottom: 2rem;
   }
 
