@@ -9,7 +9,7 @@ const Login = () => {
             <InputField placeholder='Username' iconType='user'/>
             <InputField placeholder='Password' iconType='pass'/>
             <button>LOGIN</button>
-            <p>Or Signup</p>
+            <p>Create an Account</p>
         </div>
     )
 }
