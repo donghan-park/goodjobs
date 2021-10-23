@@ -1,11 +1,16 @@
 import React from 'react'
+import { useState } from 'react'
+import '../stylesheets/Main.scss'
 
 const Main = ({ username }) => {
-    return (
-        <div className='main-page'>
-            <h1>{username}</h1>
-            <div className="listings-container">
+    const [ listings, setListings ] = useState([]);
 
+    return (
+        <div className='main-page'> 
+            <div className="listings-container">
+                {
+                    listings.map((listing) => <p>{listing}</p>)
+                }
             </div>
         </div>
     )
