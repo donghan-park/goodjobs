@@ -2,14 +2,12 @@ const express = require('express')
 const app = express();
 const chalk = require('chalk')
 const mongoose = require('mongoose')
+const passport = require('passport')
+const flash = require('express-flash')
 
 const passportConfig = require('./config/passport');
 const userController = require('./controllers/user.js')
 
-mongoose.set('useFindAndModify', false);
-mongoose.set('useCreateIndex', true);
-mongoose.set('useNewUrlParser', true);
-mongoose.set('useUnifiedTopology', true);
 mongoose.connect(process.env.MONGODB_URI);
 mongoose.connection.on('error', (err) => {
   console.error(err);
@@ -21,6 +19,7 @@ mongoose.connection.on('error', (err) => {
 app.set('port', 8000)
 app.use(passport.initialize());
 app.use(passport.session());
+
 app.use(flash());
 
 app.post('/login', userController.postLogin);
