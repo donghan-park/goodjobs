@@ -1,0 +1,14 @@
+@import './Variables.scss';
+
+.main-page {
+  position: relative;
+
+  .listings-container {
+    position: absolute;
+    border: 1px dashed red;
+    width: calc(100vw - 6rem);
+    height: 60vh;
+    margin: calc(40vh - 3rem) 3rem 0 3rem;
+    background-color: $primary-color;
+  }
+}
