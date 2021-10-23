@@ -11,7 +11,7 @@ function App() {
         <div className="App">
             <Router>
                 <Switch>
-                    <Route path="/" exact component={Login}/>
+                    <Route path="/" exact render={(props) => <Login {...props} setUsername={setUsername}/>}/>
                     <Route path="/interest" exact component={InterestForm}/>
                     <Route path="/main" exact render={(props) => <Main {...props} username={username}/>}/>
                 </Switch>
