@@ -1,25 +1,29 @@
 const express = require('express')
 const app = express();
+const chalk = require('chalk')
+const mongoose = require('mongoose')
 
-app.use((req, res, next) => {
-    // After successful login, redirect back to the intended page
-    if (!req.user
-      && req.path !== '/login'
-      && req.path !== '/signup'
-      && !req.path.match(/^\/auth/)
-      && !req.path.match(/\./)) {
-      req.session.returnTo = req.originalUrl;
-    } else if (req.user
-      && (req.path === '/account' || req.path.match(/^\/api/))) {
-      req.session.returnTo = req.originalUrl;
-    }
-    next();
-  });
+const passportConfig = require('./config/passport');
+const userController = require('./controllers/user.js')
 
-app.get('/login', userController.getLogin);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useUnifiedTopology', true);
+mongoose.connect(process.env.MONGODB_URI);
+mongoose.connection.on('error', (err) => {
+  console.error(err);
+  console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));
+  process.exit();
+});
+
+
+app.set('port', 8000)
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
 app.post('/login', userController.postLogin);
-app.get('/logout', userController.logout);
-app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
 
 
