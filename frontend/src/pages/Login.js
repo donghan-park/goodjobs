@@ -16,9 +16,34 @@ const Login = ({ setUsername }) => {
         if(isSignup){
             //check if username already exists
             //if not make username
+            fetch('/signup', {method: 'POST', body: JSON.stringify(userInfo)}).then(async response => {
+                const isJson = response.headers.get('content-type')?.includes('application/json');
+                const data = isJson && await response.json();
+        
+                // check for error response
+                if (!response.ok) {
+                    // get error message from body or default to response status
+                    const error = (data && data.message) || response.status;
+                    return Promise.reject(error);
+                }
+            })
+            
             
         } else {
             //check if username & password combination exists
+
+            fetch('/login', {method: 'POST', body: JSON.stringify(userInfo)}).then(async response => {
+                const isJson = response.headers.get('content-type')?.includes('application/json');
+                const data = isJson && await response.json();
+        
+                // check for error response
+                if (!response.ok) {
+                    // get error message from body or default to response status
+                    const error = (data && data.message) || response.status;
+                    return Promise.reject(error);
+                }
+            })
+
             //if exists:
             setUsername(userInfo.username);
         }
